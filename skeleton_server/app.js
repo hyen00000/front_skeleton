@@ -9,7 +9,6 @@ const nunjucks = require('nunjucks')
 require('dotenv').config()
 
 const homeRouter = require('./home/homeRouter')
-const { error } = require('console')
 
 const app = express()
 
