@@ -9,6 +9,7 @@ const nunjucks = require('nunjucks')
 require('dotenv').config()
 
 const homeRouter = require('./home/homeRouter')
+const userRouter = require('./user/userRouter')
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // 개발자가 각 파일로 분리시킨 라우터 등록
 app.use('/', homeRouter)
+app.use('/users', userRouter)
 
 // 404일 때
 app.use((req, res, next) => {

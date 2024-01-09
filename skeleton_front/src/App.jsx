@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from './home/component/Header'
 import Footer from './home/component/Footer'
 import HomeMain from "./home/HomeMain";
+import UsreMain from "./user/UserMain"
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       즉 xxxMain만 이곳에 등록하고 xxx업무에 의한 화면 라우팅은 xxxMain에 중첩라우팅으로 명시 */}
       <Routes>
         <Route path="/" element={<HomeMain />} />
+        <Route path="/user/*" element={<UsreMain />} />
       </Routes>
       <Footer />
     </div>
