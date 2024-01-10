@@ -6,7 +6,7 @@ const userDAO = require('./userDAO')
 router.post('/signup', async (req, res, next) => {
   console.log('user router, singup........')
   // front전달 데이터 획득
-  const daya =req.body
+  const data =req.body
   userDAO.signup(data, (resp) => {
     res.send(resp)
   })
