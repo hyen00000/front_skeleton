@@ -45,6 +45,43 @@ const userDAO = {
     } finally {
       if (conn !== null) conn.release()
     }
+  },
+
+  login: async(item, callback)=>{
+    // 유저입력 데이터 획득.
+    const {email,password} = item
+    let conn = null
+    try{
+      console.log('00')
+      conn = await getPool().getConnection()
+      console.lig('11')
+      //sql문 실행
+      const [user] = await conn.query(sql.checkId,[email])
+      console.log('22',user)
+      //db에 데이터 없을때. 유저가 잘못 입력함.
+      if(!user[0]){
+        callback({status:500, message:'아이디, 패스워드를 확인해주세요.'})
+      }else{
+        // db에 데이터 있을 때. 유저 입력 비밀번화와 db비밀번호 비교
+        console.log('33',password,user[0].password)
+        //db에 비밀번호가 해시로 되어있어 유저입력 비번을 해시로 만들어 비교해야함.
+        bcrypt.compare(password, user[0].password,async(error,result)=>{
+          if(error){
+            callback({status:500, message:'아이디, 패스워드를 확인해주세요.'})
+          }else if(result){
+            console.log('44')
+            callback({status:200, message:'OK',
+          data:{name:user[0].name},email:user[0].email})
+          }else{
+            callback({status:500, message:'아이디, 패스워드를 확인해주세요.'})
+          }
+        })
+      }
+    }catch(error){
+      return { status: 500, message: '로그인 실패', error: error }
+    }finally{
+      if (conn !== null) conn.release()
+    }
   }
 }
 
