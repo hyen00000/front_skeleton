@@ -40,7 +40,7 @@ const userDAO = {
       }
       // 에러 발생시 실행될 로직
     } catch (error) {
-      return { staatus: 500, message: '유저입력실패', error: error }
+      return { status: 500, message: '유저입력실패', error: error }
       // 마지막은 정상 실행되든, 에러가 발생하든, 마지막에 처리할 로직
     } finally {
       if (conn !== null) conn.release()
@@ -54,7 +54,7 @@ const userDAO = {
     try{
       console.log('00')
       conn = await getPool().getConnection()
-      console.lig('11')
+      console.log('11')
       //sql문 실행
       const [user] = await conn.query(sql.checkId,[email])
       console.log('22',user)
