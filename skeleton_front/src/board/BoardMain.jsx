@@ -1,13 +1,14 @@
-import {Route,Routes} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import BoardList from './component/BoardList'
+import BoardInsert from './component/BoardInsert'
 
-
-const BoardMain = () =>{
-  return(
+const BoardMain = () => {
+  return (
     <div>
       <h2>Board Main</h2>
       <Routes>
-        <Route path='/insert' element={<BoardList/>} />
+        <Route path='/list' element={<BoardList />} />
+        <Route path='/insert' element={<BoardInsert />} />
       </Routes>
     </div>
   )

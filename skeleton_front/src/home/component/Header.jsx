@@ -31,7 +31,7 @@ const Header = () => {
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link " to="/boards/insert">Board</Link>
+                <Link className="nav-link " to="/board/list">Board</Link>
               </li>
 
               <li className="nav-item dropdown">

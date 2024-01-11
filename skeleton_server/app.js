@@ -10,7 +10,7 @@ require('dotenv').config()
 
 const homeRouter = require('./home/homeRouter')
 const userRouter = require('./user/userRouter')
-const BoardRouter = require('./board/boardRouter')
+const boardRouter = require('./board/boardRouter')
 
 const app = express()
 
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }))
 // 개발자가 각 파일로 분리시킨 라우터 등록
 app.use('/', homeRouter)
 app.use('/users', userRouter)
-app.use('/boards/insert', BoardRouter)
+app.use('/boards', boardRouter)
 
 // 404일 때
 app.use((req, res, next) => {
