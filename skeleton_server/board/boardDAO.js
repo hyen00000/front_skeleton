@@ -31,16 +31,16 @@ const boardDAO = {
       // pool에서 connection 획득 후,
       conn = await getPool().getConnection()
       //sql 실행
-      const [board] = await conn.query(sql.insert)
+      const [resp] = await conn.query(sql.insert)
 
         // 개시물 insert
-            const [resp] = await conn.query(sql.insert, [item.name, item.title, item.content])
+            const [board] = await conn.query(sql.insert, [item.name, item.title, item.content])
             callback({ status: 200, message: 'OK', data: resp })
           
       // 에러 발생시 실행될 로직
     } catch (error) {
       return { status: 500, message: '게시물 입력 실패', error: error }
-      // 마지막은 정상 실행되든, 에러가 발생하든, 마지막에 처리할 로직
+      // 마지막에 처리할 로직
     } finally {
       if (conn !== null) conn.release()
     }

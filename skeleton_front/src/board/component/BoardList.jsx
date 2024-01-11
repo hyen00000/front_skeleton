@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const BoardList = () => {
@@ -11,7 +11,7 @@ const BoardList = () => {
   })
 
   const getBoardList = useCallback(async () => {
-    const resp = await axios.post("http://localhost:8000/board/list", data)
+    const resp = await axios.post("http://localhost:8000/boards/boardList")
     setBoardList(resp.data)
   }, [])
 

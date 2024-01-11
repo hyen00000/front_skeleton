@@ -1,4 +1,4 @@
-const express = reqiure('express')
+const express = require('express')
 const router = express.Router()
 const boardDAO = require('./boardDAO')
 
@@ -9,7 +9,7 @@ router.get('/boardList', function(req, res, next){
   })
 })
 
-router.post('/insert', function(req,res,next){
+router.post('/boardInsert', function(req,res,next){
   boardDAO.insert(data,(resp)=>{
     res.jon(resp)
   })
